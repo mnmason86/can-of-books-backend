@@ -1,11 +1,12 @@
 {
-  "name": "auth0TestBack",
+  "name": "auth0testback",
   "version": "1.0.0",
-  "description": "",
+  "description": "**What hours will you be available to communicate?** During class hours after lecture (2pm - 6pm)",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,15 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.4.7"
-  }
+    "mongoose": "^6.4.7",
+    "nodemon": "^2.0.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kboisseau/can-of-books-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kboisseau/can-of-books-backend/issues"
+  },
+  "homepage": "https://github.com/kboisseau/can-of-books-backend#readme"
 }
