@@ -10,9 +10,10 @@ app.use(express.json());
 
 mongoose.connect(process.env.DATABASE_URL);
 const PORT = process.env.PORT || 3001;
+const Book = require('./models/Book.js');
 
 
-pp.get('/', (request, response) => {
+app.get('/', (request, response) => {
   response.status(200).send('Welcome!');
 })
 
