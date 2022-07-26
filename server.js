@@ -20,38 +20,40 @@ db.once('open', function() {
 });
 
 app.get('/', (request, response) => {  response.status(200).send('Welcome!');})
-app.get('/books', getBooks);
-app.post('/books', postBooks);
+
+// app.post('/books', postBooks);
 
 
-async function getBooks(req,res,next){
+app.get('/books', (req,res) => {
 
+  let {title, description, status} = req.query;
   let bookQuery = {};
 
-  if(req.query.title){
-    bookQuery = {
-      title: req.query.title
-    }
+  if(title){
+    bookQuery.title = title;
   }
-  try {
-    let results = await Book.find(bookQuery);
-    res.status(200).send(results);
+  if(description){
+    bookQuery.description = description;
   }
-  catch(error){
-    next(error);
+  if(status){
+    bookQuery.status = status;
   }
-}
-async function postBooks(req,res,next){
-  try {
-    let submittedBook = await Book.create(req.body);
-    console.log(submittedBook);
-    res.status(200).send(submittedBook);
-  }
-  catch (error){
-    next(error);
-  }
-}
+  Book.find(bookQuery)
+    .then(bookData => {
+      res.send(bookData);
+    });
+});
+// async function postBooks(req,res,next){
+//   try {
+//     let submittedBook = await Book.create(req.body);
+//     console.log(submittedBook);
+//     res.status(200).send(submittedBook);
+//   }
+//   catch (error){
+//     next(error);
+//   }
+// }
 
 app.get('*', (request, response) => {  response.status(404).send('Not available');})
-app.get('/test', (request, response) => {  response.send('test request received');})
+// app.get('/test', (request, response) => {  response.send('test request received');})
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
