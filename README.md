@@ -40,9 +40,12 @@ Support each other with our strengths, knowing that we are strong/weak in differ
 
 **Name of feature: READ of CRUD**
 Estimate of time needed to complete: 4 hours
-Start time: 4:30pm (paused at 7pm, resumed at 8:30pm, paused at 10pm)
-Finish time: _____
-Actual time needed to complete: _____
+
+Start time: 4:30pm (paused at 7pm, resumed at 8:30pm, paused at 10pm, resume at 2pm next day)
+
+Finish time: 4pm
+
+Actual time needed to complete: 6 hours
 
 
 
