@@ -11,7 +11,7 @@ app.use(express.json());
 mongoose.connect(process.env.DATABASE_URL);
 const PORT = process.env.PORT || 3001;
 
-const Book = require('./models/books.js');
+const Book = require('./models/Book.js');
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -23,8 +23,11 @@ app.get('/', (request, response) => {  response.status(200).send('Welcome!');})
 app.get('/books', getBooks);
 app.post('/books', postBooks);
 
+
 async function getBooks(req,res,next){
+
   let bookQuery = {};
+
   if(req.query.title){
     bookQuery = {
       title: req.query.title
@@ -50,5 +53,5 @@ async function postBooks(req,res,next){
 }
 
 app.get('*', (request, response) => {  response.status(404).send('Not available');})
-app.get('/test', (request, response) => {  response.send('test request received')})
+app.get('/test', (request, response) => {  response.send('test request received');})
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
