@@ -3,11 +3,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-
+const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
+app.use(express.json());
 
+mongoose.connect(process.env.DATABASE_URL);
 const PORT = process.env.PORT || 3001;
+
 
 pp.get('/', (request, response) => {
   response.status(200).send('Welcome!');
@@ -51,3 +54,4 @@ app.get('/test', (request, response) => {
 })
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
