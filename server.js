@@ -24,6 +24,8 @@ app.post('/books', postBooks);
 
 app.delete('/books/:id', deleteBook);
 
+app.put('/books/:id', updateBook);
+
 async function getBooks(req, res, next) {
 
   let bookQuery = {};
@@ -53,12 +55,26 @@ async function postBooks(req, res, next) {
 
 async function deleteBook(req, res, next) {
 
-  console.log(req.params);
   const bookID = req.params.id;
   try {
 
     let deleteStatus = await BookModel.deleteOne({ _id: bookID });
     res.send(deleteStatus);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function updateBook(req, res, next){
+  
+  try{
+    const bookID = req.params.id;
+    let newBook = await BookModel.findOneAndReplace(
+      { _id: bookID },
+      req.body,
+      { returnDocument: 'after'}
+    );
+    res.send(newBook);
   } catch (error) {
     next(error);
   }
