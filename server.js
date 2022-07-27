@@ -53,8 +53,10 @@ async function postBooks(req, res, next) {
 
 async function deleteBook(req, res, next) {
 
+  console.log(req.params);
   const bookID = req.params.id;
   try {
+
     let deleteStatus = await BookModel.deleteOne({ _id: bookID });
     res.send(deleteStatus);
   } catch (error) {
