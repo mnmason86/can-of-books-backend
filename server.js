@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3001;
 const Book = require('./models/Book.js');
 
 
+const Book = require('./models/Book.js');
+
 app.get('/', (request, response) => {
   response.status(200).send('Welcome!');
 })
