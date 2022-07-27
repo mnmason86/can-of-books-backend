@@ -10,7 +10,8 @@ app.use(express.json());
 
 mongoose.connect(process.env.DATABASE_URL);
 const PORT = process.env.PORT || 3001;
-const Book = require('./models/Book.js');
+const BookModel = require('./models/Book.js');
+const { response } = require('express');
 
 
 app.get('/', (request, response) => {
@@ -24,6 +25,7 @@ app.post('/books', postBooks);
 app.delete('/books/:id', deleteBook);
 
 async function getBooks(req, res, next) {
+
   let bookQuery = {};
   if (req.query.title) {
     bookQuery = {
@@ -31,7 +33,7 @@ async function getBooks(req, res, next) {
     }
   }
   try {
-    let results = await Book.find(bookQuery);
+    let results = await BookModel.find(bookQuery);
     res.status(200).send(results);
   } catch (error) {
     next(error);
@@ -39,8 +41,9 @@ async function getBooks(req, res, next) {
 }
 
 async function postBooks(req, res, next) {
+  console.log(req.body);
   try {
-    let submittedBook = await Book.create(req.body);
+    let submittedBook = await BookModel.create(req.body);
     console.log(submittedBook);
     res.status(200).send(submittedBook);
   } catch (error) {
@@ -49,11 +52,11 @@ async function postBooks(req, res, next) {
 }
 
 async function deleteBook(req, res, next) {
+
+  const bookID = req.params.id;
   try {
-    const bookID = req.params.id;
-    Book.deleteOne({_id: bookID}, (error, deleteStatus) => {
-      !(error) ? res.send(deleteStatus) : res.status(400).send(error.message);
-    })
+    let deleteStatus = await BookModel.deleteOne({ _id: bookID });
+    res.send(deleteStatus);
   } catch (error) {
     next(error);
   }
@@ -63,9 +66,9 @@ app.get('*', (request, response) => {
   response.status(404).send('Not availabe');
 })
 
-app.get('/test', (request, response) => {
-  response.send('test request received')
-})
+app.use((error, req, res, next) => {
+  res.status(500).send(error);
+});
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
