@@ -13,7 +13,6 @@ Books are life-changing. They have the power to enlighten, educate, entertain, h
 React, Node.js, MongoDB Atlas, Mongoose, Heroku, Netlify, Bootstrap
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 07-26-2022 4:00pm - Application now has a fully-functional express server, with a GET route for the books resource.
 07-26-2022 11:00pm - Application now gives user the ability to add and delete books from the database.
