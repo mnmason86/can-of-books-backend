@@ -15,7 +15,7 @@ React, Node.js, MongoDB Atlas, Mongoose, Heroku, Netlify, Bootstrap
 ## Change Log
 
 07-26-2022 4:00pm - Application now has a fully-functional express server, with a GET route for the books resource.
-07-26-2022 11:00pm - Application now gives user the ability to add and delete books from the database.
+07-26-2022 11:00pm - Application now gives user the ability to add and delete books from state.
 
 ## Credit and Collaborations
 Jacob Knaack - Demo code and revision
@@ -74,7 +74,8 @@ Same as if one person is pulling all the weight. Have a conversation about what 
 
 Support each other with our strengths, knowing that we are strong/weak in different areas.
 
-**Name of feature: READ of CRUD - 1**
+
+**Name of feature: READ of CRUD**
 
 Estimate of time needed to complete: 4 hours
 
@@ -84,9 +85,10 @@ Finish time: 4pm
 
 Actual time needed to complete: 6 hours
 
+
 **Name of feature: CREATE and DELETE of CRUD**
 
-Estimate of time needed to complete: 3 hours
+Estimate of time needed to complete: 4 hours
 
 Start time: 2:00pm (pause at 4pm, resume at 6pm, fix bug next day)
 

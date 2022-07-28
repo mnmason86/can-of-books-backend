@@ -14,6 +14,8 @@ const BookModel = require('./models/Book.js');
 const { response } = require('express');
 
 
+const Book = require('./models/Book.js');
+
 app.get('/', (request, response) => {
   response.status(200).send('Welcome!');
 })
